@@ -7,12 +7,13 @@
 <link rel="icon" type="image/png" href="Images/favicon.png" sizes="32x32">
 
 <!-- ============================================================
-     META PIXEL — replace PASTE_YOUR_META_PIXEL_ID_HERE in BOTH
-     places below (the fbq('init', ...) line AND the <noscript>
-     img src) with your real Pixel ID. That's the only edit needed;
+     META PIXEL — paste your Pixel ID into the ONE line below
+     (META_PIXEL_ID). Nowhere else in the file needs it.
      PageView / ViewContent fire automatically from here.
      ============================================================ -->
 <script>
+var META_PIXEL_ID = 'PASTE_YOUR_META_PIXEL_ID_HERE';
+
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -22,7 +23,7 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', 'PASTE_YOUR_META_PIXEL_ID_HERE');
+fbq('init', META_PIXEL_ID);
 fbq('track', 'PageView');
 fbq('track', 'ViewContent', {
   content_name: 'Himbuti Herbal Piles Spray',
@@ -31,9 +32,6 @@ fbq('track', 'ViewContent', {
   value: 1900
 });
 </script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=PASTE_YOUR_META_PIXEL_ID_HERE&ev=PageView&noscript=1"
-/></noscript>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -173,7 +171,10 @@ strong{color:var(--rust);font-weight:700;}
     <p>अनि किनभने यो कुरा कसैलाई भन्न लाज लाग्छ, <strong>धेरैले वर्षौं यसैगरी बेवास्ता गर्छन्</strong>।</p>
 
     <div class="symgrid">
-      <img src="Images/hps-symptoms.jpg" alt="कब्जियत र पाइल्सका लक्षणहरू">
+      <img src="Images/image1.webp" alt="पाइल्सको लक्षण १">
+      <img src="Images/image2.webp" alt="पाइल्सको लक्षण २">
+      <img src="Images/image3.webp" alt="पाइल्सको लक्षण ३">
+      <img src="Images/image4.webp" alt="पाइल्सको लक्षण ४">
     </div>
 
     <p>तपाईंलाई पनि यी मध्ये <strong>कुनै लक्षण</strong> चिनेजस्तो लाग्छ?</p>
@@ -247,7 +248,7 @@ strong{color:var(--rust);font-weight:700;}
 
     <div class="videowrap">
       <video controls playsinline muted loop poster="Images/hps-video-poster.jpg">
-        <source src="Images/hps-demo-video.mp4" type="video/mp4">
+        <source src="Images/spray.mp4" type="video/mp4">
       </video>
     </div>
 
@@ -263,7 +264,7 @@ strong{color:var(--rust);font-weight:700;}
 
     <div class="prodwrap">
       <div class="prod-badge">100% Ayurvedic</div>
-      <img src="Images/hps-product.jpg" alt="Himbuti Herbal Piles Spray, 60ml" class="prod-img">
+      <img src="Images/image5.webp" alt="Himbuti Herbal Piles Spray, 60ml" class="prod-img">
       <p class="prod-caption"><strong>Himbuti Herbal Piles Spray</strong> — ३ चरणमा प्रयोग गर्न मिल्ने, तुरुन्तै शीतलता दिने स्प्रे</p>
     </div>
 
@@ -307,12 +308,6 @@ strong{color:var(--rust);font-weight:700;}
          to the Sheet. A plain form POST to a hidden iframe has no
          such ambiguity — it's a normal page navigation, just
          invisible to the visitor.
-
-         Replace the form's "action" value below with your NEW Apps
-         Script deployment's /exec URL (see Code.gs). Whenever you
-         edit and redeploy Code.gs, you MUST create a "New version"
-         in Deploy → Manage deployments, or this URL keeps serving
-         the old code.
          ============================================================ -->
     <form class="order-form" id="orderForm"
           action="https://script.google.com/macros/s/AKfycbxk50V66IDcRiESWmxnbJKfnzy4Y6vjQZqGZqNc62UHXUVM4TLbAfcA1hZtOQGpHPMA/exec"
