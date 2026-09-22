@@ -5,6 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>कब्जियत, कडा दिसा अनि रगत, बेवास्ता नगर्नुहोस्</title>
 <link rel="icon" type="image/png" href="Images/favicon.png" sizes="32x32">
+
+<!-- ============================================================
+     META PIXEL — replace PASTE_YOUR_META_PIXEL_ID_HERE in BOTH
+     places below (the fbq('init', ...) line AND the <noscript>
+     img src) with your real Pixel ID. That's the only edit needed;
+     PageView / ViewContent fire automatically from here.
+     ============================================================ -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', 'PASTE_YOUR_META_PIXEL_ID_HERE');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_name: 'Himbuti Herbal Piles Spray',
+  content_category: 'Herbal / Piles Care',
+  currency: 'NPR',
+  value: 1900
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=PASTE_YOUR_META_PIXEL_ID_HERE&ev=PageView&noscript=1"
+/></noscript>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@500;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -264,11 +294,29 @@ strong{color:var(--rust);font-weight:700;}
   <div class="panel" id="orderPanel">
     <h2>प्याकेज छान्नुहोस्</h2>
     <div class="free-badge">💰 नगदमै भुक्तानी (Cash on Delivery) &nbsp;·&nbsp; 🚚 नेपालभर <strong>निःशुल्क डेलिभरी</strong></div>
-    <button class="pkg" data-label="१ बोतल (१ महिनाको मात्रा)" data-price="1900" onclick="selectPkg(this)"><span class="radio"></span><span class="label"><span class="old">Rs 2,500</span><span class="new">Rs 1,900</span><span class="qty">१ बोतल — १ महिनाको मात्रा</span></span></button>
-    <button class="pkg best selected" data-label="२ बोतल (२ महिनाको मात्रा) — पूर्ण कोर्स" data-price="2900" onclick="selectPkg(this)"><span class="radio"></span><span class="label"><span class="old">Rs 5,000</span><span class="new">Rs 2,900</span><span class="qty">२ बोतल — २ महिनाको मात्रा<span class="tag complete">पूर्ण कोर्स</span></span></span></button>
-    <button class="pkg" data-label="३ बोतल (३ महिनाको मात्रा) — गम्भीर अवस्थाको लागि" data-price="3700" onclick="selectPkg(this)"><span class="radio"></span><span class="label"><span class="old">Rs 7,500</span><span class="new">Rs 3,700</span><span class="qty">३ बोतल — ३ महिनाको मात्रा<span class="tag severe">गम्भीर अवस्था भए यो लिनुहोस्</span></span></span></button>
+    <button type="button" class="pkg" data-label="१ बोतल (१ महिनाको मात्रा)" data-price="1900" onclick="selectPkg(this)"><span class="radio"></span><span class="label"><span class="old">Rs 2,500</span><span class="new">Rs 1,900</span><span class="qty">१ बोतल — १ महिनाको मात्रा</span></span></button>
+    <button type="button" class="pkg best selected" data-label="२ बोतल (२ महिनाको मात्रा) — पूर्ण कोर्स" data-price="2900" onclick="selectPkg(this)"><span class="radio"></span><span class="label"><span class="old">Rs 5,000</span><span class="new">Rs 2,900</span><span class="qty">२ बोतल — २ महिनाको मात्रा<span class="tag complete">पूर्ण कोर्स</span></span></span></button>
+    <button type="button" class="pkg" data-label="३ बोतल (३ महिनाको मात्रा) — गम्भीर अवस्थाको लागि" data-price="3700" onclick="selectPkg(this)"><span class="radio"></span><span class="label"><span class="old">Rs 7,500</span><span class="new">Rs 3,700</span><span class="qty">३ बोतल — ३ महिनाको मात्रा<span class="tag severe">गम्भीर अवस्था भए यो लिनुहोस्</span></span></span></button>
 
-    <form class="order-form" id="orderForm" onsubmit="submitOrder(event)">
+    <!-- ============================================================
+         ORDER FORM — submits as a REAL browser POST to a hidden
+         iframe, not via fetch(). This is deliberate: Google Apps
+         Script Web Apps don't reliably support cross-origin fetch()
+         with a readable response, which is why the previous no-cors
+         version could show "order received" even when nothing wrote
+         to the Sheet. A plain form POST to a hidden iframe has no
+         such ambiguity — it's a normal page navigation, just
+         invisible to the visitor.
+
+         Replace the form's "action" value below with your NEW Apps
+         Script deployment's /exec URL (see Code.gs). Whenever you
+         edit and redeploy Code.gs, you MUST create a "New version"
+         in Deploy → Manage deployments, or this URL keeps serving
+         the old code.
+         ============================================================ -->
+    <form class="order-form" id="orderForm"
+          action="https://script.google.com/macros/s/AKfycbxk50V66IDcRiESWmxnbJKfnzy4Y6vjQZqGZqNc62UHXUVM4TLbAfcA1hZtOQGpHPMA/exec"
+          method="POST" target="hidden_iframe" onsubmit="onOrderSubmit(event)">
       <div class="form-group">
         <label for="custName">पूरा नाम</label>
         <input type="text" id="custName" name="name" placeholder="तपाईंको नाम" required>
@@ -281,6 +329,9 @@ strong{color:var(--rust);font-weight:700;}
         <label for="custAddress">ठेगाना</label>
         <textarea id="custAddress" name="address" placeholder="जिल्ला, नगरपालिका/गाउँपालिका, वडा नं." required></textarea>
       </div>
+      <input type="hidden" id="hiddenPackage" name="package" value="२ बोतल (२ महिनाको मात्रा) — पूर्ण कोर्स">
+      <input type="hidden" id="hiddenPrice" name="price" value="2900">
+      <input type="hidden" name="product" value="Himbuti Herbal Piles Spray">
       <button type="submit" class="cta" id="orderSubmitBtn">✅ अहिले अर्डर गर्नुहोस्</button>
     </form>
 
@@ -298,6 +349,9 @@ strong{color:var(--rust);font-weight:700;}
   <footer>© 2026 Himbuti · <a href="https://wa.me/9779713309074" target="_blank" rel="noopener">WhatsApp सहयोग</a></footer>
 </div>
 
+<!-- Hidden target for the order form — keeps the submission invisible to the visitor -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="onOrderFrameLoad()"></iframe>
+
 <div class="sticky-cta" id="stickyCta">
   <div class="price-block">
     <span class="old" id="stickyOld">Rs 5,000</span>
@@ -307,13 +361,21 @@ strong{color:var(--rust);font-weight:700;}
 </div>
 
 <script>
-// IMPORTANT: This landing page logs orders to its OWN Google Sheet, separate from
-// any other Himbuti/product landing page. Deploy a NEW Google Apps Script Web App
-// (bound to a NEW Sheet dedicated to "Himbuti Herbal Piles Spray" orders) and paste
-// that deployment's /exec URL below. Do not reuse a script URL from another product.
-var GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbykFi6YbGqF29rzBaNNPpL_oX5HzPhIBNapR0Gx9rQo8h2P8hbGFaEkselPGC-magD7/exec";
-
 var selectedPkg = { label: '२ बोतल (२ महिनाको मात्रा) — पूर्ण कोर्स', price: '2900' };
+var initiateCheckoutFired = false;
+var orderFormSubmitted = false;
+
+function fireInitiateCheckoutOnce(){
+  if(initiateCheckoutFired) return;
+  initiateCheckoutFired = true;
+  if(typeof fbq === 'function'){
+    fbq('track', 'InitiateCheckout', {
+      content_name: 'Himbuti Herbal Piles Spray',
+      currency: 'NPR',
+      value: parseInt(selectedPkg.price, 10)
+    });
+  }
+}
 
 function selectPkg(btn){
   document.querySelectorAll('.pkg').forEach(function(b){ b.classList.remove('selected'); });
@@ -321,6 +383,10 @@ function selectPkg(btn){
   var label = btn.getAttribute('data-label');
   var price = btn.getAttribute('data-price');
   selectedPkg = { label: label, price: price };
+
+  document.getElementById('hiddenPackage').value = label;
+  document.getElementById('hiddenPrice').value = price;
+
   var oldPriceEl = btn.querySelector('.old');
   var newPriceEl = btn.querySelector('.new');
   var stickyOld = document.getElementById('stickyOld');
@@ -341,36 +407,46 @@ function toggleFaq(btn){
   if(!wasOpen) item.classList.add('open');
 }
 
-function submitOrder(e){
-  e.preventDefault();
-  var btn = document.getElementById('orderSubmitBtn');
+// Runs on the real form submit — validates, then lets the browser
+// perform the actual POST to the hidden iframe (no preventDefault
+// on the happy path).
+function onOrderSubmit(e){
   var name = document.getElementById('custName').value.trim();
   var phone = document.getElementById('custPhone').value.trim();
   var address = document.getElementById('custAddress').value.trim();
-  if(!name || !phone || !address){ return; }
+  if(!name || !phone || !address){
+    e.preventDefault();
+    return;
+  }
 
+  orderFormSubmitted = true;
+  var btn = document.getElementById('orderSubmitBtn');
   btn.disabled = true;
   btn.textContent = 'पठाइँदैछ...';
-
-  var payload = new FormData();
-  payload.append('name', name);
-  payload.append('phone', phone);
-  payload.append('address', address);
-  payload.append('package', selectedPkg.label);
-  payload.append('price', selectedPkg.price);
-  payload.append('product', 'Himbuti Herbal Piles Spray');
-
-  fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: payload })
-    .then(function(){
-      document.getElementById('orderForm').style.display = 'none';
-      document.getElementById('orderSuccess').style.display = 'block';
-    })
-    .catch(function(){
-      btn.disabled = false;
-      btn.textContent = '✅ अहिले अर्डर गर्नुहोस्';
-      alert('अर्डर पठाउन समस्या भयो, कृपया पुनः प्रयास गर्नुहोस्।');
-    });
+  // form submits normally from here — do not preventDefault
 }
+
+// Fires once the hidden iframe finishes loading the Apps Script's
+// response. Guarded by orderFormSubmitted so the iframe's own
+// initial blank load (on page load) doesn't trigger this.
+function onOrderFrameLoad(){
+  if(!orderFormSubmitted) return;
+
+  document.getElementById('orderForm').style.display = 'none';
+  document.getElementById('orderSuccess').style.display = 'block';
+
+  if(typeof fbq === 'function'){
+    fbq('track', 'Purchase', {
+      content_name: 'Himbuti Herbal Piles Spray',
+      content_ids: ['himbuti-hps'],
+      content_type: 'product',
+      currency: 'NPR',
+      value: parseInt(selectedPkg.price, 10),
+      num_items: 1
+    });
+  }
+}
+
 var counted = false;
 function animateStats(){
   if(counted) return; counted = true;
@@ -389,8 +465,8 @@ try{
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting) animateStats(); });
   }, {threshold:0.3});
-  var target = document.querySelector('.statgrid');
-  if(target) obs.observe(target);
+  var statTarget = document.querySelector('.statgrid');
+  if(statTarget) obs.observe(statTarget);
 }catch(e){ animateStats(); }
 
 try{
@@ -398,8 +474,12 @@ try{
   var orderPanel = document.getElementById('orderPanel');
   var stickyObs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting){ stickyBar.classList.remove('show'); }
-      else { stickyBar.classList.add('show'); }
+      if(e.isIntersecting){
+        stickyBar.classList.remove('show');
+        fireInitiateCheckoutOnce();
+      } else {
+        stickyBar.classList.add('show');
+      }
     });
   }, {threshold:0.15});
   if(orderPanel) stickyObs.observe(orderPanel);
